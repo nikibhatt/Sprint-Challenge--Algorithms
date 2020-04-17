@@ -21,21 +21,24 @@ Egg is broken if thrown from floor f and higher.
 Number of eggs:0 [counter]
 Number of drops: 0 [counter]
 
-Attempt1: Start at the middle and then depending on whether it broke or not, make the next attempt from the middle of the remaining portion.
-Since its binary search kind of Algorithms, the time complexity will be O(log(n)). And the space complexity will be O(n) or less, but can be rounded off to O(n).
+Strategy: Start at the middle and change one floor at a time. Keep track of result of previous attempt. This is the least efficient way.
+Since its linear search kind of Algorithms, the time complexity will be O(n/2) or O(n). And the space complexity will be O(n) or slightly more, but can be rounded off to O(n).
 
 def test(n):
-   try_floor = x
-   If egg is not broken:      
-      Number_of_drops += 1
-      try_floor = (n-try_floor)/2
-      direction = up
-   elif egg is broken and direction is down:
-      Number_of_eggs += 1
-      Number_of_drops += 1
-      return try_floor
-   elif egg is broken and direction is up
-      Number_of_eggs += 1
-      Number_of_drops += 1
-      try_floor = (try_floor - 1)/2
-      Prev_direction = down
+   try_floor = n/2
+   prev_attempt = null
+   egg is dropped
+   while try_floor is not 0 or try_floor is not n:
+    If egg is not broken and prev_attempt = true:      
+        Number_of_drops += 1
+        try_floor = try_floor+1        
+    else (egg is broken and prev_attempt = true)
+        Number_of_eggs += 1
+        Number_of_drops += 1
+        try_floor = try_floor - 1
+        prev_attempt = false
+
+
+        egg         prev_attempt      result
+        breaks      breaks            keep going
+        breaks      didnt breaks      return prev_floor
