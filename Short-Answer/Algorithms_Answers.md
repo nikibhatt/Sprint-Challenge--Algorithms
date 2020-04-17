@@ -2,12 +2,12 @@
 
 ## Exercise I
 
-a) Time: O(log(n)), Space: O(1)
-Time complexity is Log(n) since within the while loop, the n is getting squared. So the iterations is exponentially lesser.
+a) Time: O(n), Space: O(1)
+Time complexity is O(n) since its a while loop that will be iterated linearly with respect to n.
 Space complexity is O(1) since its a simple mathematical equation
 
-b) Time: O(n^2), Space: O(1)
-Time complexity is N squared because of the nested loops. Even though the J is doubled up and while loop is not running n times, it rounds up to N square.
+b) Time: O(n), Space: O(1)
+Time complexity for the inner loop seems to be logarithmically related to n. And the outer loop will be iterated n times. It can be simplified to O(n)
 Space complexity is 1 since its simple mathematical variables, even though there are two of them
 
 c) Time: O(n), Space: O(n)
@@ -18,29 +18,28 @@ Space complexity is O of n again because of its stored in memory through the who
 
 The building has n floors.
 Egg is broken if thrown from floor f and higher.
+
 Number of eggs:0 [counter]
 Number of drops: 0 [counter]
 
-Strategy: Start at the middle and change one floor at a time. Keep track of result of previous attempt. This is the least efficient way.
-Since its linear search kind of Algorithms, the time complexity will be O(n/2) or O(n). And the space complexity will be O(n) or slightly more, but can be rounded off to O(n).
+Strategy: Start at the middle and use binary search method to either go up or down. Every attempt will change the floor to half of the remaining floors, either up or down. Until if you move down, it doesn't break.
 
-def test(n):
-   try_floor = n/2
-   prev_attempt = null   
-   while try_floor is not 0 or try_floor is not n:
-   egg is dropped
-    If egg is not broken and prev_attempt = true:      
+Since its binary search, the time complexity will be O(log(n). And the space complexity will be O(n) or slightly more, but can be rounded off to O(n).
+
+
+def test(min_floor, max_floor, Number_of_eggs, Number_of_drops)
+
+   if max_floor - min_floor == 1
+        return(min_floor, Number_of_eggs, Number_of_drops)
+
+   try_floor = (max_floor - min_floor)/2
+   if egg is not broken:      
         Number_of_drops += 1
-        try_floor = try_floor+1        
-    else (egg is broken and prev_attempt = true)
+        min_floor = try_floor + 1        
+        return test(min_floor, max_floor, Number_of_eggs, Number_of_drops)
+
+    else
         Number_of_eggs += 1
-        Number_of_drops += 1
-        try_floor = try_floor - 1
-        prev_attempt = false
-
-
-        "egg state" "prev_attempt"    "result"
-        breaks      breaks            keep going down 1 floor
-        breaks      didnt breaks      return prev_floor
-        didnt break didn't breaks     keep going up 1 floor
-        didnt break break             return try_floor
+        Number_of_drops += 1        
+        max_floor = try_floor - 1
+        return test(min_floor, max_floor, Number_of_eggs, Number_of_drops)

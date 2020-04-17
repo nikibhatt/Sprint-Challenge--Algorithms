@@ -95,17 +95,23 @@ class SortingRobot:
     def sort(self):
         """
         Sort the robot's list.
+        1. swap
+        2. read list going right, compare, largest number will be at the end
+        3. return this new list
+        4. read going right, 2nd largest number will be 2nd to last place
         """
-        while self.can_move_right():
+
+        self._position = 1
+        self._item = 0
+
+        if self.can_move_right():
             self.move_right()
-            if self.compare_item() == -1:
-                self.swap_item()
-        while self.can_move_left():
-            self.move_left()
             if self.compare_item() == 1:
                 self.swap_item()
-
-
+        if self.can_move_left():
+            self.move_left()
+            if self.compare_item() == -1:
+                self.swap_item()
 
 
 
