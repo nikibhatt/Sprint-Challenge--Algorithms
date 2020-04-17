@@ -26,9 +26,9 @@ Since its linear search kind of Algorithms, the time complexity will be O(n/2) o
 
 def test(n):
    try_floor = n/2
-   prev_attempt = null
-   egg is dropped
+   prev_attempt = null   
    while try_floor is not 0 or try_floor is not n:
+   egg is dropped
     If egg is not broken and prev_attempt = true:      
         Number_of_drops += 1
         try_floor = try_floor+1        
@@ -39,6 +39,8 @@ def test(n):
         prev_attempt = false
 
 
-        egg         prev_attempt      result
-        breaks      breaks            keep going
+        "egg state" "prev_attempt"    "result"
+        breaks      breaks            keep going down 1 floor
         breaks      didnt breaks      return prev_floor
+        didnt break didn't breaks     keep going up 1 floor
+        didnt break break             return try_floor
