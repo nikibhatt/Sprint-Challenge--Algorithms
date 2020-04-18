@@ -99,6 +99,7 @@ class SortingRobot:
         2. read list going right, compare, largest number will be at the end
         3. return this new list
         4. read going right, 2nd largest number will be 2nd to last place
+        The time complexity of this Algorithm is O(n^2) since its a nested loop that iterates over n both the times.
         """
 
         self._position = 0
